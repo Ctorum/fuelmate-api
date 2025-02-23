@@ -6,7 +6,6 @@ security = HTTPBearer()
 
 async def get_current_user(credentials: HTTPAuthorizationCredentials = Depends(security)):
     try:
-        # Verify the JWT token with Supabase
         user = supabase_client.auth.get_user(credentials.credentials)
         return user
     except Exception:
